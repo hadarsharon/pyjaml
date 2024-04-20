@@ -12,7 +12,7 @@ authors = [
 requires-python = ">=3.7"
 license = { file = "LICENSE" }
 readme = "README.md"
-keywords = ["python", "jaml", "jml", "configuration"]
+keywords = ["python", "jaml", "configuration"]
 classifiers = [
     "Development Status :: 1 - Planning",
     "Intended Audience :: Developers",
