@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "jaml"
+name = "pyjaml"
 description = "Python library for working with JAML configuration files"
 version = "0.0.0"
 authors = [
@@ -39,9 +39,9 @@ classifiers = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/hadarsharon/jaml/wiki"
-Repository = "https://github.com/hadarsharon/jaml"
-Changelog = "https://github.com/hadarsharon/jaml/releases"
+Documentation = "https://github.com/hadarsharon/pyjaml/wiki"
+Repository = "https://github.com/hadarsharon/pyjaml"
+Changelog = "https://github.com/hadarsharon/pyjaml/releases"
 
 [tool.setuptools.packages]
 find = { }
