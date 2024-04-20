@@ -1,0 +1,15 @@
+# This is an example JAML file, used for basic demonstration of JAMLs capabilities and syntax.
+# JAML is a simple-yet-powerful formatting language, used primarily for configuration files - much like TOML or YAML.
+# Unlike these languages, it offers built-in templating with loops and conditionals in an environment-agnostic manner.
+
+#---------------------------------------------------------------------------------------------------------------------#
+
+# In JAML files, comments are lines that start with a hash symbol (#).
+# This is an example of a comment. It can appear on its own or as part of a line.
+
+# Variables are used to store data that can be referenced and manipulated in a program. Whitespace in JAML is ignored.
+
+string_var = "Hello, World!"  # variable string assignment (note the quotes)
+integer_var = 5  # variable integer assignment - no quotes needed for integers
+float_var = 5.0  # variable float assignment - no quotes needed for floats either
+bool_var = True  # variable boolean assignment - no quotes needed for booleans either
