@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyjaml"
+name = "py-jaml"
 description = "Python library for working with JAML configuration files"
 version = "0.0.0"
 authors = [
