@@ -1,7 +1,8 @@
 # This is an example JAML file, used for basic demonstration of JAMLs capabilities and syntax.
 # JAML is a simple-yet-powerful formatting language, used primarily for configuration files - much like TOML or YAML.
-# It supports a variety of data types, including strings, integers, floats, booleans, arrays, lists and maps.
-# However - unlike these languages, it offers built-in, environment-agnostic templating, loops and conditionals.
+# It supports a variety of data types, including strings, integers, floats, booleans, arrays and maps.
+# However - unlike these languages, it offers a built-in templating engine that is environment and language agnostic.
+# This allows for templating, loops and conditional statements to be used directly in the configuration file.
 
 #---------------------------------------------------------------------------------------------------------------------#
 
@@ -12,7 +13,10 @@
 # Variables are used to store data that can be referenced and manipulated in a program. Whitespace in JAML is ignored.
 # Variable assignment is done using the equals sign (=), with the variable name on the left and the value on the right.
 
+#---------------------------------------------------------------------------------------------------------------------#
+
 ## Simple type variable assignments ##
+
 
 character_variable = 'a'  # character assignment - note the single quotes
 # characters can be any single character, including letters, numbers, symbols and whitespace
@@ -43,82 +47,90 @@ null_variable = Null  # null assignment - note the capitalisation
 # Null is used to represent the absence of a value, and is equivalent to None in Python or null in JavaScript
 # case sensitivity is important - null, NULL, None and none are not valid nulls
 
+#---------------------------------------------------------------------------------------------------------------------#
 
 ## Compound type variable assignments ##
 
-array_variable = (1, 2, 3, 4, 5) # array assignment - note the round brackets
+
+array_variable = [False, True, 2, 3.0, "four", 5]  # array assignment - note the square brackets
 # arrays are ordered collections of elements, which can be of any type supported by JAML
-# arrays in JAML are homogenous - all elements must be of the same type
-# mixing types in an array is therefore not allowed - (1, 2, "three", 4, 5) is not a valid array
+# arrays in JAML are heterogeneous - elements can be of different types
+# arrays can contain any combination of strings, integers, floats, booleans, arrays and maps
+# ["one", 2, 3.0, True, [4, 5], ["six", 7], ("eight": 9, 10: "ten")] is a valid array
 
-# multidimensional (or "nested") arrays are supported, like so: (1, 2, (3, 4), 5)
+# multidimensional (or "nested") arrays are supported, like so: [1, 2, [3, 4], 5]
 # nested arrays can be of any depth, and can contain arrays of different lengths and types
-# (1, 2, ("one", "two"), (5.0)) is a valid array, as is (1, 2, (3.0, 4.0, (True, False)), 7)
+# [1, 2, ["one", "two"], [5.0]] is a valid array, as is [1, 2, [3.0, 4.0, [True, False]], 7]
 
-# arrays can also be empty, like so: ()
+# arrays can also be empty, like so: []
 
 # arrays can be written on multiple lines, like so (indentation is optional):
-# array_variable = (
-#    1,
-#    2,
-#    (
-#       3,
-#       4
-#    ),
-#    5
-# )
-
-
-list_variable = [False, True, 2, 3.0, "four", 5]  # list assignment - note the square brackets
-# lists are ordered collections of elements, which can be of any type supported by JAML
-# lists in JAML are heterogeneous - elements can be of different types
-# lists can contain any combination of strings, integers, floats, booleans, arrays, lists and maps
-# ["one", 2, 3.0, True, (4, 5), ["six", 7], {"eight": 9, 10: "ten"}] is a valid list
-
-# multidimensional (or "nested") lists are supported, like so: [1, 2, [3, 4], 5]
-# nested lists can be of any depth, and can contain lists of different lengths and types
-# [1, 2, ["one", "two"], [5.0]] is a valid list, as is [1, 2, [3.0, 4.0, [True, False]], 7]
-
-# lists can also be empty, like so: []
-
-# lists can be written on multiple lines, like so (indentation is optional):
-# list_variable = [
+# array_variable = [
 #    "one",
 #    2,
 #    3.0,
 #    True,
-#    (
+#    [
 #       4,
 #       5
-#     ),
+#    ],
 #    [
 #       "six",
 #       7
 #    ],
-#    {
+#    (
 #       "eight": 9,
 #       10: "ten"
-#    }
+#    )
 # ]
 
 
-map_variable = {"key1": "value1", 2: "value2", 3.0: 3.0, '4': True} # map assignment - note the curly brackets
+map_variable = ("key1": "value1", 2: "value2", 3.0: 3.0, '4': True) # map assignment - note the round brackets
 # maps in JAML are key-value pairs - each key is unique, and each value is associated with a key
-# keys can be strings, integers, floats or booleans, but not arrays, lists or maps
-# values can be any type, including strings, integers, floats, booleans, arrays, lists and maps
+# keys can be strings, integers, floats or booleans, but not arrays or maps
+# values can be any type, including strings, integers, floats, booleans, arrays and maps
 
-# nested maps are supported, like so: {"key": {"nested_key": "value"}}
+# nested maps are supported, like so: ("key": ("nested_key": "value"))
 # nested maps can be of any depth, and can contain maps of different lengths and types
-# {"key1": {"nested_key1": "value1", "nested_key2": "value2"}, "key2": {"nested_key3": "value3"}} is a valid map
+# ("key1": ("nested_key1": "value1", "nested_key2": "value2"), "key2": ("nested_key3": "value3")) is a valid map
 
-# maps can also be empty, like so: {}
+# maps can also be empty, like so: ()
 
 # maps can be written on multiple lines, like so (indentation is optional):
-# map_variable = {
+# map_variable = (
 #   "key1": "value1",
 #   "key2": "value2",
 #   "key3": 3.0,
 #   "key4": True
-# }
+# )
 
+#---------------------------------------------------------------------------------------------------------------------#
 
+## Templating ##
+
+# JAML supports templating, which allows for the substitution of placeholders into values, based on context.
+# Variables that contain placeholders are called templates, and can be used to generate dynamic content.
+# The values to substitute into placeholders are called parameters, and are passed to the template at runtime.
+# Placeholders are denoted by angle brackets with the parameter name, like so: <some_parameter>
+# Placeholders can be used in any data type supported by JAML
+
+template_string_variable = "Hello, <name>!"  # template string assignment - note the angle brackets
+template_integer_variable = <number> + 5  # template integer assignment
+template_float_variable = <number> + 5.0  # template float assignment
+template_complex_variable = <real> + <imaginary>i  # template complex assignment
+template_boolean_variable = <flag>  # template boolean assignment
+
+template_array_variable = [<one>, <two>, <three>, <four>, <five>]  # template array assignment
+# or alternatively:
+template_array_variable = <array>
+
+template_map_variable = ("key1": <value1>, "key2": <value2>, "key3": <value3>)  # template map assignment
+# or alternatively:
+template_map_variable = <map>
+
+#---------------------------------------------------------------------------------------------------------------------#
+
+## Loops ##
+
+# JAML supports loops, which allow for the iteration over arrays and maps, or for the generation of dynamic content.
+# Loops can be used to generate repetitive content, or to iterate over data structures and perform operations on them.
