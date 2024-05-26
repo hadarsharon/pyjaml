@@ -112,7 +112,8 @@ map_variable = ("key1": "value1", 2: "value2", 3.0: 3.0, '4': True) # map assign
 # Variables that contain placeholders are called templates, and can be used to generate dynamic content.
 # The values to substitute into placeholders are called parameters, and are passed to the template at runtime.
 # Placeholders are denoted by angle brackets with the parameter name, like so: <some_parameter>
-# Placeholders can be used in any data type supported by JAML
+# Therefore, anything within angle brackets is considered a placeholder, and will be replaced with a parameter value.
+# Placeholders can be used in any data type supported by JAML, and parameters can be of any type supported by JAML.
 
 template_string_variable = "Hello, <name>!"  # template string assignment - note the angle brackets
 template_integer_variable = <number> + 5  # template integer assignment
