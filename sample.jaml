@@ -6,14 +6,19 @@
 
 #---------------------------------------------------------------------------------------------------------------------#
 
+## Comments ##
+
 # In JAML files, comments are lines that start with a hash symbol (#).
 # This is an example of a comment. It can appear on its own or as part of a line.
-# Multiline comments are not supported in JAML, but can be achieved by using multiple single-line comments.
+# Multiline comments are not implemented in JAML, but can be achieved by simply using multiple single-line comments.
+
+#---------------------------------------------------------------------------------------------------------------------#
+
+## Variables ##
 
 # Variables are used to store data that can be referenced and manipulated in a program. Whitespace in JAML is ignored.
 # Variable assignment is done using the equals sign (=), with the variable name on the left and the value on the right.
 
-#---------------------------------------------------------------------------------------------------------------------#
 
 ## Simple type variable assignments ##
 
@@ -131,7 +136,25 @@ template_map_variable = <map>
 
 #---------------------------------------------------------------------------------------------------------------------#
 
+## Conditional Statements ##
+
+{ if @age > 18 }
+can_drink = true
+{ else }
+can_drink = false
+{ end }
+
+# This can also be simplified via evaluation using operators
+
+can_drink = { @age > 18 }  # yields true if over 18, else false
+
+#---------------------------------------------------------------------------------------------------------------------#
+
 ## Loops ##
 
 # JAML supports loops, which allow for the iteration over arrays and maps, or for the generation of dynamic content.
 # Loops can be used to generate repetitive content, or to iterate over data structures and perform operations on them.
+# There are two types of loops in JAML: for loops and while loops.
+# For loops iterate over a range of values, whereas while loops iterate until a condition is met.
+# Loops can be nested, and can contain conditional statements, variables and templates.
+# The syntax of loops is similar to that of most programming languages, and they are denoted by curly brackets: {}
