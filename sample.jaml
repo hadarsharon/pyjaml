@@ -1,6 +1,6 @@
 # This is an example JAML file, used for basic demonstration of JAMLs capabilities and syntax.
 # JAML is a simple-yet-powerful formatting language, used primarily for configuration files - much like TOML or YAML.
-# It supports a variety of data types, including strings, integers, floats, booleans, arrays and maps.
+# It supports a variety of data types, including strings, integers, floats, booleans, arrays, maps and records.
 # However - unlike these languages, it offers a built-in templating engine that is environment and language agnostic.
 # This allows for templating, loops and conditional statements to be used directly in the configuration file.
 
@@ -60,8 +60,8 @@ null_variable = Null  # null assignment - note the capitalisation
 array_variable = [False, True, 2, 3.0, "four", 5]  # array assignment - note the square brackets
 # arrays are ordered collections of elements, which can be of any type supported by JAML
 # arrays in JAML are heterogeneous - elements can be of different types
-# arrays can contain any combination of strings, integers, floats, booleans, arrays and maps
-# ["one", 2, 3.0, True, [4, 5], ["six", 7], ("eight": 9, 10: "ten")] is a valid array
+# arrays can contain any combination of strings, integers, floats, booleans, arrays, maps and records
+# ["one", 2, 3.0, True, [4, 5], ["six", 7], {"eight": 9, 10: "ten"}] is a valid array
 
 # multidimensional (or "nested") arrays are supported, like so: [1, 2, [3, 4], 5]
 # nested arrays can be of any depth, and can contain arrays of different lengths and types
@@ -83,31 +83,88 @@ array_variable = [False, True, 2, 3.0, "four", 5]  # array assignment - note the
 #       "six",
 #       7
 #    ],
-#    (
+#    {
 #       "eight": 9,
 #       10: "ten"
-#    )
+#    }
 # ]
 
 
-map_variable = ("key1": "value1", 2: "value2", 3.0: 3.0, '4': True) # map assignment - note the round brackets
+map_variable = {"key1": "value1", 2: "value2", 3.0: 3.0, '4': True} # map assignment - note the curly brackets
 # maps in JAML are key-value pairs - each key is unique, and each value is associated with a key
-# keys can be strings, integers, floats or booleans, but not arrays or maps
-# values can be any type, including strings, integers, floats, booleans, arrays and maps
+# keys can be strings, integers, floats or booleans, but not arrays, maps or records
+# values can be any type, including strings, integers, floats, booleans, arrays, maps and records
 
-# nested maps are supported, like so: ("key": ("nested_key": "value"))
+# nested maps are supported, like so: {"key": {"nested_key": "value"}}
 # nested maps can be of any depth, and can contain maps of different lengths and types
-# ("key1": ("nested_key1": "value1", "nested_key2": "value2"), "key2": ("nested_key3": "value3")) is a valid map
+# {"key1": {"nested_key1": "value1", "nested_key2": "value2"}, "key2": {"nested_key3": "value3"}} is a valid map
 
-# maps can also be empty, like so: ()
+# maps can also be empty, like so: {}
 
 # maps can be written on multiple lines, like so (indentation is optional):
-# map_variable = (
+# map_variable = {
 #   "key1": "value1",
 #   "key2": "value2",
 #   "key3": 3.0,
 #   "key4": True
-# )
+# }
+
+
+record_variable = <"key1": "value1", "key2": Null, "optional_key">  # record assignment - note the angle brackets
+# records in JAML are somewhat similar to maps, but support optional keys and a different syntax
+# records are defined using angle brackets, with key-value pairs separated by colons, or just keys for optional keys
+# unlike maps, keys can only be strings, but values can be any type supported by JAML
+
+# nested records are supported, like so: <"key": <"nested_key": "value">>
+# nested records can be of any depth, and can contain records of different lengths and types
+# <"key1": <"nested_key1": "value1", "nested_key2">, "key2"> is a valid record
+
+# records can also be empty, like so: <>
+
+# records can be written on multiple lines, like so (indentation is optional):
+# record_variable = <
+#   "key1": "value1",
+#   "key2": Null,
+#   "optional_key"
+# >
+
+#---------------------------------------------------------------------------------------------------------------------#
+
+## Operators ##
+
+# JAML supports a variety of operators, which can be used to perform arithmetic, logical and comparison operations.
+# Operators can be used with variables, literals and expressions, and can be combined to form complex statements.
+# The following is a list of operators supported by JAML, along with their descriptions and examples.
+# Note that operators are evaluated in order of precedence, with higher precedence operators evaluated first.
+# Parentheses can be used to change the order of evaluation, and to group expressions together.
+# Operators are evaluated from left to right, with the exception of the assignment operator, which is evaluated from right to left.
+
+# Arithmetic Operators (+ - * / ** %) #
+
+addition = 1 + 2  # addition operator - adds two numbers together
+subtraction = 3 - 4  # subtraction operator - subtracts one number from another
+multiplication = 5 * 6  # multiplication operator - multiplies two numbers together
+division = 7 / 8  # division operator - divides one number by another
+exponentiation = 9 ** 10  # exponentiation operator - raises one number to the power of another
+modulus = 11 % 12  # modulus operator - returns the remainder of dividing one number by another
+
+# Comparison Operators (== != > < >= <= @ ~@) #
+
+equality = 1 == 2  # equality operator - checks if two values are equal
+inequality = 3 != 4  # inequality operator - checks if two values are not equal
+greater_than = 5 > 6  # greater than operator - checks if one value is greater than another
+less_than = 7 < 8  # less than operator - checks if one value is less than another
+greater_than_or_equal_to = 9 >= 10  # greater than or equal to operator - checks if one value is greater than or equal to another
+less_than_or_equal_to = 11 <= 12  # less than or equal to operator - checks if one value is less than or equal to another
+containment = element @ data  # containment operator - checks if an element is in a compound data type, like an array or map
+exclusion = element ~@ data  # exclusion operator - checks if an element is not in a compound data type, like an array or map
+
+# Logical Operators (& | ! ^) #
+
+and_operator = True & False  # and operator - returns True if both values are True, else False
+or_operator = True | False  # or operator - returns True if either value is True, else False
+not_operator = !True  # not operator - returns True if the value is False, else False
+xor_operator = True ^ False  # xor operator - returns True if one value is True and the other is False, else False
 
 #---------------------------------------------------------------------------------------------------------------------#
 
@@ -116,44 +173,81 @@ map_variable = ("key1": "value1", 2: "value2", 3.0: 3.0, '4': True) # map assign
 # JAML supports templating, which allows for the substitution of placeholders into values, based on context.
 # Variables that contain placeholders are called templates, and can be used to generate dynamic content.
 # The values to substitute into placeholders are called parameters, and are passed to the template at runtime.
-# Placeholders are denoted by angle brackets with the parameter name, like so: <some_parameter>
-# Therefore, anything within angle brackets is considered a placeholder, and will be replaced with a parameter value.
+# Placeholders are denoted by tilde signs (~) around the parameter name, like so: ~some_parameter~
+# Therefore, anything enclosed within tildes is considered a placeholder, and will be replaced with a parameter value.
+# To use a literal tilde sign in a template, it must be escaped with a backslash (\), like so: \~
 # Placeholders can be used in any data type supported by JAML, and parameters can be of any type supported by JAML.
 
-template_string_variable = "Hello, <name>!"  # template string assignment - note the angle brackets
-template_integer_variable = <number> + 5  # template integer assignment
-template_float_variable = <number> + 5.0  # template float assignment
-template_complex_variable = <real> + <imaginary>i  # template complex assignment
-template_boolean_variable = <flag>  # template boolean assignment
+template_string_variable = "Hello, ~name~!"  # template string assignment - note the tildes around the parameter
+template_integer_variable = ~number~ + 5  # template integer assignment
+template_float_variable = ~number~ + 5.0  # template float assignment
+template_complex_variable = ~real~ + ~imaginary~i  # template complex assignment
+template_boolean_variable = ~flag~  # template boolean assignment
 
-template_array_variable = [<one>, <two>, <three>, <four>, <five>]  # template array assignment
+template_array_variable = [~one~, ~two~, ~three~, ~four~, ~five~]  # template array assignment
 # or alternatively:
-template_array_variable = <array>
+template_array_variable = ~array~
 
-template_map_variable = ("key1": <value1>, "key2": <value2>, "key3": <value3>)  # template map assignment
+template_map_variable = {"key1": ~value1~, "key2": ~value2~, "key3": ~value3~}  # template map assignment
 # or alternatively:
-template_map_variable = <map>
+template_map_variable = ~map~
+
+template_record_variable = <"key1": ~value1~, "key2": ~value2~, "key3">  # template record assignment
+# or alternatively:
+template_record_variable = ~record~
 
 #---------------------------------------------------------------------------------------------------------------------#
 
 ## Conditional Statements ##
 
-{ if @age > 18 }
-can_drink = true
-{ else }
-can_drink = false
-{ end }
+# JAML supports conditional statements, which allow for the execution of code based on the evaluation of expressions.
+# Conditional statements can be used to control the flow of a program, and to perform different actions based on conditions.
+# There are three types of conditional statements in JAML: if statements, elsif statements and else statements.
+# if statements execute a block of code if a condition is true
+# elsif statements execute a block of code if the previous condition is false and the current condition is true
+# else statements execute a block of code if all previous conditions are false.
+# The keyword 'then' is used to denote the start of the code block to execute following the conditional statement.
+# The keyword 'end' is used to denote the end of the conditional statement as a whole (not just the code block).
+# Conditional statements can be nested, and can contain variables, templates and operators.
 
-# This can also be simplified via evaluation using operators
+# If Statements #
 
-can_drink = { @age > 18 }  # yields true if over 18, else false
+if ~flag~ then
+    # code block to execute if the parameter is True
+end if
+
+if ~number~ > 0 then
+    # code block to execute if the parameter is greater than zero
+end
+
+if ~name~ == "Alice" then
+    # code block to execute if the parameter is equal to "Alice"
+end
+
+# Elsif Statements #
+
+if ~flag~ then
+    # code block to execute if the parameter is True
+elsif ~number~ > 0 then
+    # code block to execute if the parameter is greater than zero
+elsif ~name~ == "Alice" then
+    # code block to execute if the parameter is equal to "Alice"
+end
+
+# Else Statements #
+
+if ~flag~ then
+    # code block to execute if the parameter is True
+else
+    # code block to execute if the parameter is False
+end
 
 #---------------------------------------------------------------------------------------------------------------------#
 
 ## Loops ##
 
 # JAML supports loops, which allow for the iteration over arrays and maps, or for the generation of dynamic content.
-# Loops can be used to generate repetitive content, or to iterate over data structures and perform operations on them.
+# Loops can be used to generate repetitive content, or to iterate over data recordures and perform operations on them.
 # There are two types of loops in JAML: for loops and while loops.
 # For loops iterate over a range of values, whereas while loops iterate until a condition is met.
 # Loops can be nested, and can contain conditional statements, variables and templates.
