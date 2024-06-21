@@ -142,6 +142,11 @@ record_variable = <"key1": "value1", "key2": Null, "optional_key">  # record ass
 # Parentheses can be used to change the order of evaluation, and to group expressions together.
 # Operators are evaluated from left to right, with the exception of the assignment operator, which is evaluated from right to left.
 
+# Rudimentary Operators (= :) #
+
+assignment = 1  # assignment operator - assigns a value to a variable
+mapping = {"key": "value"} / <"key": "value">  # mapping operator - assigns a value to a key in a map or a record
+
 # Arithmetic Operators (+ - * / ** %) #
 
 addition = 1 + 2  # addition operator - adds two numbers together
