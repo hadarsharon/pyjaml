@@ -2,7 +2,8 @@
 # JAML is a simple-yet-powerful formatting language, used primarily for configuration files - much like TOML or YAML.
 # It supports a variety of data types, including strings, integers, floats, booleans, arrays, maps and records.
 # However - unlike these languages, it offers a built-in templating engine that is environment and language agnostic.
-# This allows for templating, loops and conditional statements to be used directly in the configuration file.
+# This allows for templating, loops and conditionals to be used directly in the configuration file.
+# For these purposes, JAML makes strong use of operators, which will be explained in detail in this file.
 
 #---------------------------------------------------------------------------------------------------------------------#
 
@@ -14,10 +15,11 @@
 
 #---------------------------------------------------------------------------------------------------------------------#
 
-## Variables ##
+## Variables and Data Types ##
 
 # Variables are used to store data that can be referenced and manipulated in a program. Whitespace in JAML is ignored.
 # Variable assignment is done using the equals sign (=), with the variable name on the left and the value on the right.
+# The equals sign stands for the assignment operator, which assigns the value on the right to the variable on the left.
 
 
 ## Simple type variable assignments ##
@@ -94,6 +96,7 @@ map_variable = {"key1": "value1", 2: "value2", 3.0: 3.0, '4': True} # map assign
 # maps in JAML are key-value pairs - each key is unique, and each value is associated with a key
 # keys can be strings, integers, floats or booleans, but not arrays, maps or records
 # values can be any type, including strings, integers, floats, booleans, arrays, maps and records
+# note the mapping operator (:) between the key and value, and the comma (,) between key-value pairs
 
 # nested maps are supported, like so: {"key": {"nested_key": "value"}}
 # nested maps can be of any depth, and can contain maps of different lengths and types
@@ -173,28 +176,28 @@ xor_operator = True ^ False  # xor operator - returns True if one value is True 
 # JAML supports templating, which allows for the substitution of placeholders into values, based on context.
 # Variables that contain placeholders are called templates, and can be used to generate dynamic content.
 # The values to substitute into placeholders are called parameters, and are passed to the template at runtime.
-# Placeholders are denoted by tilde signs (~) around the parameter name, like so: ~some_parameter~
-# Therefore, anything enclosed within tildes is considered a placeholder, and will be replaced with a parameter value.
-# To use a literal tilde sign in a template, it must be escaped with a backslash (\), like so: \~
+# Placeholders are denoted by dollar signs ($) around the parameter name, like so: $some_parameter$
+# Therefore, anything enclosed within dollars is considered a placeholder, and will be replaced with a parameter value.
+# To use a literal dollar sign in a template, it must be escaped with a backslash (\), like so: \$
 # Placeholders can be used in any data type supported by JAML, and parameters can be of any type supported by JAML.
 
-template_string_variable = "Hello, ~name~!"  # template string assignment - note the tildes around the parameter
-template_integer_variable = ~number~ + 5  # template integer assignment
-template_float_variable = ~number~ + 5.0  # template float assignment
-template_complex_variable = ~real~ + ~imaginary~i  # template complex assignment
-template_boolean_variable = ~flag~  # template boolean assignment
+template_string_variable = "Hello, $name$!"  # template string assignment - note the dollar signs around the parameter
+template_integer_variable = $number$ + 5  # template integer assignment
+template_float_variable = $number$ + 5.0  # template float assignment
+template_complex_variable = $real$ + $imaginary$i  # template complex assignment
+template_boolean_variable = $flag$  # template boolean assignment
 
-template_array_variable = [~one~, ~two~, ~three~, ~four~, ~five~]  # template array assignment
+template_array_variable = [$one$, $two$, $three$, $four$, $five$]  # template array assignment
 # or alternatively:
-template_array_variable = ~array~
+template_array_variable = $array$
 
-template_map_variable = {"key1": ~value1~, "key2": ~value2~, "key3": ~value3~}  # template map assignment
+template_map_variable = {"key1": $value1$, "key2": $value2$, "key3": $value3$}  # template map assignment
 # or alternatively:
-template_map_variable = ~map~
+template_map_variable = $map$
 
-template_record_variable = <"key1": ~value1~, "key2": ~value2~, "key3">  # template record assignment
+template_record_variable = <"key1": $value1$, "key2": $value2$, "key3">  # template record assignment
 # or alternatively:
-template_record_variable = ~record~
+template_record_variable = $record$
 
 #---------------------------------------------------------------------------------------------------------------------#
 
@@ -212,31 +215,31 @@ template_record_variable = ~record~
 
 # If Statements #
 
-if ~flag~ then
+if $flag$ then
     # code block to execute if the parameter is True
 end if
 
-if ~number~ > 0 then
+if $number$ > 0 then
     # code block to execute if the parameter is greater than zero
 end
 
-if ~name~ == "Alice" then
+if $name$ == "Alice" then
     # code block to execute if the parameter is equal to "Alice"
 end
 
 # Elsif Statements #
 
-if ~flag~ then
+if $flag$ then
     # code block to execute if the parameter is True
-elsif ~number~ > 0 then
+elsif $number$ > 0 then
     # code block to execute if the parameter is greater than zero
-elsif ~name~ == "Alice" then
+elsif $name$ == "Alice" then
     # code block to execute if the parameter is equal to "Alice"
 end
 
 # Else Statements #
 
-if ~flag~ then
+if $flag$ then
     # code block to execute if the parameter is True
 else
     # code block to execute if the parameter is False
