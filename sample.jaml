@@ -174,9 +174,9 @@ or_operator → True | False  # or operator - returns True if either value is Tr
 not_operator → !True  # not operator - returns True if the value is False, else False
 xor_operator → True ^ False  # xor operator - returns True if one value is True and the other is False, else False
 
-# Ternary Operator (?:) #
+# Conditional Operator (?:) #
 
-ternary → condition ? true_value : false_value # ternary operator - returns one of two values based on a condition
+conditional → condition ? value_if_true : value_if_false  # conditional operator - returns one of two values based on a condition
 
 #---------------------------------------------------------------------------------------------------------------------#
 
