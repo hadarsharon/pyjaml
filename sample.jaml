@@ -144,35 +144,39 @@ record_variable = <"key1": "value1", "key2": Null, "optional_key">  # record ass
 
 # Rudimentary Operators (= :) #
 
-assignment = 1  # assignment operator - assigns a value to a variable
-mapping = {"key": "value"} / <"key": "value">  # mapping operator - assigns a value to a key in a map or a record
+assignment → var = 1  # assignment operator - assigns a value to a variable
+mapping → {"key": "value"} / <"key": "value">  # mapping operator - assigns a value to a key in a map or a record
 
 # Arithmetic Operators (+ - * / ** %) #
 
-addition = 1 + 2  # addition operator - adds two numbers together
-subtraction = 3 - 4  # subtraction operator - subtracts one number from another
-multiplication = 5 * 6  # multiplication operator - multiplies two numbers together
-division = 7 / 8  # division operator - divides one number by another
-exponentiation = 9 ** 10  # exponentiation operator - raises one number to the power of another
-modulus = 11 % 12  # modulus operator - returns the remainder of dividing one number by another
+addition → 1 + 2  # addition operator - adds two numbers together
+subtraction → 3 - 4  # subtraction operator - subtracts one number from another
+multiplication → 5 * 6  # multiplication operator - multiplies two numbers together
+division → 7 / 8  # division operator - divides one number by another
+exponentiation → 9 ** 10  # exponentiation operator - raises one number to the power of another
+modulus → 11 % 12  # modulus operator - returns the remainder of dividing one number by another
 
 # Comparison Operators (== != > < >= <= @ ~@) #
 
-equality = 1 == 2  # equality operator - checks if two values are equal
-inequality = 3 != 4  # inequality operator - checks if two values are not equal
-greater_than = 5 > 6  # greater than operator - checks if one value is greater than another
-less_than = 7 < 8  # less than operator - checks if one value is less than another
-greater_than_or_equal_to = 9 >= 10  # greater than or equal to operator - checks if one value is greater than or equal to another
-less_than_or_equal_to = 11 <= 12  # less than or equal to operator - checks if one value is less than or equal to another
-containment = element @ data  # containment operator - checks if an element is in a compound data type, like an array or map
-exclusion = element ~@ data  # exclusion operator - checks if an element is not in a compound data type, like an array or map
+equality → 1 == 2  # equality operator - checks if two values are equal
+inequality → 3 != 4  # inequality operator - checks if two values are not equal
+greater_than → 5 > 6  # greater than operator - checks if one value is greater than another
+less_than → 7 < 8  # less than operator - checks if one value is less than another
+greater_than_or_equal_to → 9 >= 10  # greater than or equal to operator - checks if one value is greater than or equal to another
+less_than_or_equal_to → 11 <= 12  # less than or equal to operator - checks if one value is less than or equal to another
+containment → element @ data  # containment operator - checks if an element is in a compound data type, like an array or map
+exclusion → element ~@ data  # exclusion operator - checks if an element is not in a compound data type, like an array or map
 
 # Logical Operators (& | ! ^) #
 
-and_operator = True & False  # and operator - returns True if both values are True, else False
-or_operator = True | False  # or operator - returns True if either value is True, else False
-not_operator = !True  # not operator - returns True if the value is False, else False
-xor_operator = True ^ False  # xor operator - returns True if one value is True and the other is False, else False
+and_operator → True & False  # and operator - returns True if both values are True, else False
+or_operator → True | False  # or operator - returns True if either value is True, else False
+not_operator → !True  # not operator - returns True if the value is False, else False
+xor_operator → True ^ False  # xor operator - returns True if one value is True and the other is False, else False
+
+# Ternary Operator (?:) #
+
+ternary → condition ? true_value : false_value # ternary operator - returns one of two values based on a condition
 
 #---------------------------------------------------------------------------------------------------------------------#
 
@@ -255,7 +259,7 @@ end
 ## Loops ##
 
 # JAML supports loops, which allow for the iteration over arrays and maps, or for the generation of dynamic content.
-# Loops can be used to generate repetitive content, or to iterate over data recordures and perform operations on them.
+# Loops can be used to generate repetitive content, or to iterate over data records and perform operations on them.
 # There are two types of loops in JAML: for loops and while loops.
 # For loops iterate over a range of values, whereas while loops iterate until a condition is met.
 # Loops can be nested, and can contain conditional statements, variables and templates.
