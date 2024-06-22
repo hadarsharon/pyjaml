@@ -15,14 +15,50 @@
 
 #---------------------------------------------------------------------------------------------------------------------#
 
-## Variables and Data Types ##
+## Constants, Variables, and Auxiliaries ##
 
-# Variables are used to store data that can be referenced and manipulated in a program. Whitespace in JAML is ignored.
-# Variable assignment is done using the equals sign (=), with the variable name on the left and the value on the right.
-# The equals sign stands for the assignment operator, which assigns the value on the right to the variable on the left.
+# Constants are fixed values that are defined once and cannot be changed throughout the config file.
+# They are the most basic form of data storage in JAML, and are used to store values that are not expected to change.
+# It is the safest way to store data that should not be modified, as it prevents accidental changes to the value.
+# Constant assignment is done using the equals sign (=), with the constant name on the left and the value on the right.
+# The equals sign stands for the constant assignment operator in JAML.
+
+# Variables, on the other hand, are used to store data that can be referenced and manipulated later down the file.
+# They are more flexible than constants, as their values can be changed at any point in the file.
+# This allows for dynamic data storage, and can be combined with conditionals, loops and templates to generate content.
+# Variable assignment is done in a similar way, using a colon and equals sign (:=), also known as the walrus operator.
+# The colon and equals sign (or the walrus) stands for the variable assignment operator in JAML.
+
+# Auxiliaries are temporary variables that are used to store intermediate values during the construction of the file.
+# This makes them useful for storing temporary values, or for performing calculations that are not needed later.
+# Unlike Constants and Variables, Auxiliaries are discarded as the file is processed, and are not part of its output.
+# Auxiliary assignment is done using the tilde sign (~), with the auxiliary name on the left and the value on the right.
+# The tilde stands for the auxiliary assignment operator in JAML.
+
+constant = 5  # constant assignment - note the usage of the equals sign
+constant = 7  # this will raise an error, as constants cannot be reassigned!
+
+variable := 5  # variable assignment - note the usage of the walrus operator
+variable := 7  # this will not raise an error, as variables can be reassigned
+
+auxiliary ~ 5  # auxiliary assignment - note the usage of the tilde sign
+auxiliary ~ 7  # this will not raise an error, as auxiliaries are temporary and can be reassigned
+
+# The output of this file will not contain the auxiliary assignment, as it is not part of the final configuration.
+# e.g. upon parsing the file we will have the following output: constant → 5, variable → 7
+
+#---------------------------------------------------------------------------------------------------------------------#
+
+## Data Types ##
+
+# JAML supports a variety of data types, which can be used to store different kinds of information.
+# The simple data types are character, string, integer, float, complex, boolean and null.
+# These data types are used to store individual values, and can be assigned to variables, constants or auxiliaries.
+# The compound data types are array, map and record.
+# These data types are used to store collections of values, and can be nested to create more complex data structures.
 
 
-## Simple type variable assignments ##
+## Simple type assignments ##
 
 
 character_variable = 'a'  # character assignment - note the single quotes
@@ -54,9 +90,9 @@ null_variable = Null  # null assignment - note the capitalisation
 # Null is used to represent the absence of a value, and is equivalent to None in Python or null in JavaScript
 # case sensitivity is important - null, NULL, None and none are not valid nulls
 
-#---------------------------------------------------------------------------------------------------------------------#
 
-## Compound type variable assignments ##
+
+## Compound type assignments ##
 
 
 array_variable = [False, True, 2, 3.0, "four", 5]  # array assignment - note the square brackets
@@ -140,12 +176,14 @@ record_variable = <"key1": "value1", "key2": Null, "optional_key">  # record ass
 # The following is a list of operators supported by JAML, along with their descriptions and examples.
 # Note that operators are evaluated in order of precedence, with higher precedence operators evaluated first.
 # Parentheses can be used to change the order of evaluation, and to group expressions together.
-# Operators are evaluated from left to right, with the exception of the assignment operator, which is evaluated from right to left.
+# Operators are evaluated from left to right, with the exception of the assignment operators, which are evaluated from right to left.
 
-# Rudimentary Operators (= :) #
+# Rudimentary Operators (= := ~ :) #
 
-assignment → var = 1  # assignment operator - assigns a value to a variable
-mapping → {"key": "value"} / <"key": "value">  # mapping operator - assigns a value to a key in a map or a record
+constant -> const = 1 # constant assignment operator - assigns a value to a constant
+variable → var := 1  # variable assignment operator - assigns a value to a variable
+auxiliary → aux ~ 1  # auxiliary assignment operator - assigns a value to a temporary variable
+mapping → {"key": "value"} or <"key": "value">  # mapping operator - maps a value to a key in a map or a record
 
 # Arithmetic Operators (+ - * / ** %) #
 
