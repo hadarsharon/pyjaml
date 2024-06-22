@@ -206,6 +206,12 @@ variable → var := 1  # variable assignment operator - assigns a value to a var
 auxiliary → aux ~ 1  # auxiliary assignment operator - assigns a value to an auxiliary
 mapping → {"key": "value"} or <"key": "value">  # mapping operator - maps a value to a key in a map or a record
 
+# Indexing Operators ([ ] .) #
+
+array_indexing → array[0]  # array indexing operator - accesses an element in an array by index
+map_indexing → map["key"]  # map indexing operator - accesses a value in a map by key
+record_indexing → record.key  # record indexing operator - accesses a value in a record by key
+
 # Arithmetic Operators (+ - * / ** %) #
 
 addition → 1 + 2  # addition operator - adds two numbers together
