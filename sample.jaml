@@ -77,9 +77,9 @@ float = 5.0  # float assignment - note the floating point
 # floats can be any number, positive or negative, including zero, with a decimal point
 # e.g. 1.0, 2.0, 3.0, 0.0, -1.0, -2.0, -3.0, etc.
 
-complex = 5 + 3i  # complex assignment - note the + syntax with the 'i' suffix
+complex = 5+3i  # complex assignment - note the + syntax with the 'i' suffix
 # complex numbers can be any number, positive or negative, including zero, with an imaginary component
-# e.g. 1 + 2i, 3 + 4i, 0 + 1i, -1 + 2i, -3 - 4i, etc.
+# e.g. 1+2i, 3+4i, 0+1i, -1+2i, -3-4i, etc.
 
 boolean = True  # boolean assignment - note the capitalisation
 # booleans can be either True or False, and are used to represent logical values
@@ -232,7 +232,7 @@ nested_conditional → condition1 ? value_if_true1 : condition2 ? value_if_true2
 template_string → "Hello, $name$!"  # template string with a `name` parameter - note the dollar signs
 template_integer → $number$ + 5  # template integer with a `number` parameter
 template_float → $number$ + 5.0  # template float with a `number` parameter
-template_complex → $real$ + $imaginary$i  # template complex with `real` and `imaginary` parameters
+template_complex → $real$+$imaginary$i  # template complex with `real` and `imaginary` parameters
 template_boolean → $flag$  # template boolean with a `flag` parameter
 
 template_array → [$one$, $two$, $three$, $four$, $five$]  # template array with parameters
