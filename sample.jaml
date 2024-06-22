@@ -182,7 +182,7 @@ record_variable = <"key1": "value1", "key2": Null, "optional_key">  # record ass
 
 constant -> const = 1 # constant assignment operator - assigns a value to a constant
 variable → var := 1  # variable assignment operator - assigns a value to a variable
-auxiliary → aux ~ 1  # auxiliary assignment operator - assigns a value to a temporary variable
+auxiliary → aux ~ 1  # auxiliary assignment operator - assigns a value to an auxiliary
 mapping → {"key": "value"} or <"key": "value">  # mapping operator - maps a value to a key in a map or a record
 
 # Arithmetic Operators (+ - * / ** %) #
