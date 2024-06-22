@@ -2,7 +2,7 @@
 # JAML is a simple-yet-powerful formatting language, used primarily for configuration files - much like TOML or YAML.
 # It supports a variety of data types, including strings, integers, floats, booleans, arrays, maps and records.
 # However - unlike these languages, it offers a built-in templating engine that is environment and language agnostic.
-# This allows for templating, loops and conditionals to be used directly in the configuration file.
+# This allows for templating and conditionals to be used directly in the configuration file.
 # For these purposes, JAML makes strong use of operators, which will be explained in detail in this file.
 
 #---------------------------------------------------------------------------------------------------------------------#
@@ -25,7 +25,7 @@
 
 # Variables, on the other hand, are used to store data that can be referenced and manipulated later down the file.
 # They are more flexible than constants, as their values can be changed at any point in the file.
-# This allows for dynamic data storage, and can be combined with conditionals, loops and templates to generate content.
+# This allows for dynamic data storage, and can be combined with conditionals and templates to generate content.
 # Variable assignment is done in a similar way, using a colon and equals sign (:=), also known as the walrus operator.
 # The colon and equals sign (or the walrus) stands for the variable assignment operator in JAML.
 
@@ -61,32 +61,32 @@ auxiliary ~ 7  # this will not raise an error, as auxiliaries are temporary and 
 ## Simple type assignments ##
 
 
-character_variable = 'a'  # character assignment - note the single quotes
+character = 'a'  # character assignment - note the single quotes
 # characters can be any single character, including letters, numbers, symbols and whitespace
 # e.g. 'a', '1', '!', ' ', '\n', '\t', etc.
 
-string_variable = "Hello, World!"  # string assignment - note the double quotes
+string = "Hello, World!"  # string assignment - note the double quotes
 # strings can be any sequence of characters, including letters, numbers, symbols and whitespace
 # e.g. "Hello, World!", "123", "!", " ", "Hello, \nWorld!", etc.
 
-integer_variable = 5  # integer assignment - note the lack of a decimal point
+integer = 5  # integer assignment - note the lack of a decimal point
 # integers can be any whole number, positive or negative, including zero
 # e.g. 1, 2, 3, 0, -1, -2, -3, etc.
 
-float_variable = 5.0  # float assignment - note the floating point
+float = 5.0  # float assignment - note the floating point
 # floats can be any number, positive or negative, including zero, with a decimal point
 # e.g. 1.0, 2.0, 3.0, 0.0, -1.0, -2.0, -3.0, etc.
 
-complex_variable = 5 + 3i  # complex assignment - note the + syntax with the 'i' suffix
+complex = 5 + 3i  # complex assignment - note the + syntax with the 'i' suffix
 # complex numbers can be any number, positive or negative, including zero, with an imaginary component
 # e.g. 1 + 2i, 3 + 4i, 0 + 1i, -1 + 2i, -3 - 4i, etc.
 
-boolean_variable = True  # boolean assignment - note the capitalisation
+boolean = True  # boolean assignment - note the capitalisation
 # booleans can be either True or False, and are used to represent logical values
 # True is equivalent to 1, and False is equivalent to 0
 # case sensitivity is important - true, false, TRUE and FALSE are not valid booleans
 
-null_variable = Null  # null assignment - note the capitalisation
+null = Null  # null assignment - note the capitalisation
 # Null is used to represent the absence of a value, and is equivalent to None in Python or null in JavaScript
 # case sensitivity is important - null, NULL, None and none are not valid nulls
 
@@ -95,7 +95,7 @@ null_variable = Null  # null assignment - note the capitalisation
 ## Compound type assignments ##
 
 
-array_variable = [False, True, 2, 3.0, "four", 5]  # array assignment - note the square brackets
+array = [False, True, 2, 3.0, "four", 5]  # array assignment - note the square brackets
 # arrays are ordered collections of elements, which can be of any type supported by JAML
 # arrays in JAML are heterogeneous - elements can be of different types
 # arrays can contain any combination of strings, integers, floats, booleans, arrays, maps and records
@@ -108,7 +108,7 @@ array_variable = [False, True, 2, 3.0, "four", 5]  # array assignment - note the
 # arrays can also be empty, like so: []
 
 # arrays can be written on multiple lines, like so (indentation is optional):
-# array_variable = [
+# array = [
 #    "one",
 #    2,
 #    3.0,
@@ -128,7 +128,7 @@ array_variable = [False, True, 2, 3.0, "four", 5]  # array assignment - note the
 # ]
 
 
-map_variable = {"key1": "value1", 2: "value2", 3.0: 3.0, '4': True} # map assignment - note the curly brackets
+map = {"key1": "value1", 2: "value2", 3.0: 3.0, '4': True} # map assignment - note the curly brackets
 # maps in JAML are key-value pairs - each key is unique, and each value is associated with a key
 # keys can be strings, integers, floats or booleans, but not arrays, maps or records
 # values can be any type, including strings, integers, floats, booleans, arrays, maps and records
@@ -141,7 +141,7 @@ map_variable = {"key1": "value1", 2: "value2", 3.0: 3.0, '4': True} # map assign
 # maps can also be empty, like so: {}
 
 # maps can be written on multiple lines, like so (indentation is optional):
-# map_variable = {
+# map = {
 #   "key1": "value1",
 #   "key2": "value2",
 #   "key3": 3.0,
@@ -149,7 +149,7 @@ map_variable = {"key1": "value1", 2: "value2", 3.0: 3.0, '4': True} # map assign
 # }
 
 
-record_variable = <"key1": "value1", "key2": Null, "optional_key">  # record assignment - note the angle brackets
+record = <"key1": "value1", "key2": Null, "optional_key">  # record assignment - note the angle brackets
 # records in JAML are somewhat similar to maps, but support optional keys and a different syntax
 # records are defined using angle brackets, with key-value pairs separated by colons, or just keys for optional keys
 # unlike maps, keys can only be strings, but values can be any type supported by JAML
@@ -161,7 +161,7 @@ record_variable = <"key1": "value1", "key2": Null, "optional_key">  # record ass
 # records can also be empty, like so: <>
 
 # records can be written on multiple lines, like so (indentation is optional):
-# record_variable = <
+# record = <
 #   "key1": "value1",
 #   "key2": Null,
 #   "optional_key"
@@ -172,7 +172,7 @@ record_variable = <"key1": "value1", "key2": Null, "optional_key">  # record ass
 ## Operators ##
 
 # JAML supports a variety of operators, which can be used to perform arithmetic, logical and comparison operations.
-# Operators can be used with variables, literals and expressions, and can be combined to form complex statements.
+# Operators can be used with values, literals and expressions, and can be combined to form complex statements.
 # The following is a list of operators supported by JAML, along with their descriptions and examples.
 # Note that operators are evaluated in order of precedence, with higher precedence operators evaluated first.
 # Parentheses can be used to change the order of evaluation, and to group expressions together.
@@ -202,8 +202,8 @@ greater_than → 5 > 6  # greater than operator - checks if one value is greater
 less_than → 7 < 8  # less than operator - checks if one value is less than another
 greater_than_or_equal_to → 9 >= 10  # greater than or equal to operator - checks if one value is greater than or equal to another
 less_than_or_equal_to → 11 <= 12  # less than or equal to operator - checks if one value is less than or equal to another
-containment → element @ data  # containment operator - checks if an element is in a compound data type, like an array or map
-exclusion → element ~@ data  # exclusion operator - checks if an element is not in a compound data type, like an array or map
+membership → element @ data  # membership operator - checks if an element is in a compound data type, like an array or map
+non_membership → element ~@ data  # non-membership operator - checks if an element is not in a compound data type
 
 # Logical Operators (& | ! ^) #
 
@@ -215,90 +215,46 @@ xor_operator → True ^ False  # xor operator - returns True if one value is Tru
 # Conditional Operator (?:) #
 
 conditional → condition ? value_if_true : value_if_false  # conditional operator - returns one of two values based on a condition
+nested_conditional → condition1 ? value_if_true1 : condition2 ? value_if_true2 : value_if_false  # nested conditional operator - returns one of multiple values based on multiple conditions
 
 #---------------------------------------------------------------------------------------------------------------------#
 
 ## Templating ##
 
 # JAML supports templating, which allows for the substitution of placeholders into values, based on context.
-# Variables that contain placeholders are called templates, and can be used to generate dynamic content.
+# Expressions that contain placeholders are called templates, and can be used to generate dynamic content.
 # The values to substitute into placeholders are called parameters, and are passed to the template at runtime.
 # Placeholders are denoted by dollar signs ($) around the parameter name, like so: $some_parameter$
 # Therefore, anything enclosed within dollars is considered a placeholder, and will be replaced with a parameter value.
 # To use a literal dollar sign in a template, it must be escaped with a backslash (\), like so: \$
 # Placeholders can be used in any data type supported by JAML, and parameters can be of any type supported by JAML.
 
-template_string_variable = "Hello, $name$!"  # template string assignment - note the dollar signs around the parameter
-template_integer_variable = $number$ + 5  # template integer assignment
-template_float_variable = $number$ + 5.0  # template float assignment
-template_complex_variable = $real$ + $imaginary$i  # template complex assignment
-template_boolean_variable = $flag$  # template boolean assignment
+template_string → "Hello, $name$!"  # template string with a `name` parameter - note the dollar signs
+template_integer → $number$ + 5  # template integer with a `number` parameter
+template_float → $number$ + 5.0  # template float with a `number` parameter
+template_complex → $real$ + $imaginary$i  # template complex with `real` and `imaginary` parameters
+template_boolean → $flag$  # template boolean with a `flag` parameter
 
-template_array_variable = [$one$, $two$, $three$, $four$, $five$]  # template array assignment
+template_array → [$one$, $two$, $three$, $four$, $five$]  # template array with parameters
 # or alternatively:
-template_array_variable = $array$
+template_array → $array$
 
-template_map_variable = {"key1": $value1$, "key2": $value2$, "key3": $value3$}  # template map assignment
+template_map → {"key1": $value1$, "key2": $value2$, "key3": $value3$}  # template array with parameters
 # or alternatively:
-template_map_variable = $map$
+template_map → $map$
 
-template_record_variable = <"key1": $value1$, "key2": $value2$, "key3">  # template record assignment
+template_record → <"key1": $value1$, "key2": $value2$, "key3">  # template record with parameters
 # or alternatively:
-template_record_variable = $record$
+template_record → $record$
 
 #---------------------------------------------------------------------------------------------------------------------#
 
-## Conditional Statements ##
+## Conditionals ##
 
-# JAML supports conditional statements, which allow for the execution of code based on the evaluation of expressions.
-# Conditional statements can be used to control the flow of a program, and to perform different actions based on conditions.
-# There are three types of conditional statements in JAML: if statements, elsif statements and else statements.
-# if statements execute a block of code if a condition is true
-# elsif statements execute a block of code if the previous condition is false and the current condition is true
-# else statements execute a block of code if all previous conditions are false.
-# The keyword 'then' is used to denote the start of the code block to execute following the conditional statement.
-# The keyword 'end' is used to denote the end of the conditional statement as a whole (not just the code block).
-# Conditional statements can be nested, and can contain variables, templates and operators.
+# JAML supports conditional statements, which allow for parameter substitution based on the evaluation of expressions.
+# Conditional statements can be nested, and can contain different data types, templates and operators.
+# The conditional ternary operator was introduced in the previous section, and can be used to create simple conditionals.
 
-# If Statements #
-
-if $flag$ then
-    # code block to execute if the parameter is True
-end if
-
-if $number$ > 0 then
-    # code block to execute if the parameter is greater than zero
-end
-
-if $name$ == "Alice" then
-    # code block to execute if the parameter is equal to "Alice"
-end
-
-# Elsif Statements #
-
-if $flag$ then
-    # code block to execute if the parameter is True
-elsif $number$ > 0 then
-    # code block to execute if the parameter is greater than zero
-elsif $name$ == "Alice" then
-    # code block to execute if the parameter is equal to "Alice"
-end
-
-# Else Statements #
-
-if $flag$ then
-    # code block to execute if the parameter is True
-else
-    # code block to execute if the parameter is False
-end
-
-#---------------------------------------------------------------------------------------------------------------------#
-
-## Loops ##
-
-# JAML supports loops, which allow for the iteration over arrays and maps, or for the generation of dynamic content.
-# Loops can be used to generate repetitive content, or to iterate over data records and perform operations on them.
-# There are two types of loops in JAML: for loops and while loops.
-# For loops iterate over a range of values, whereas while loops iterate until a condition is met.
-# Loops can be nested, and can contain conditional statements, variables and templates.
-# The syntax of loops is similar to that of most programming languages, and they are denoted by curly brackets: {}
+some_boolean_constant = $param$ ? True : False  # note the usage of a template with the conditional operator
+some_integer_variable := $other_number$ ? $number$ / $other_number$ : 0  # note the usage of various operators
+some_auxiliary ~ ($number$ % 2) & ($number$ > 0)? "Even Positive" : "Odd Positive"  # note the usage of various operators
