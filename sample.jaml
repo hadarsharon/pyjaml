@@ -1,5 +1,5 @@
 # This is an example JAML file, used for basic demonstration of JAMLs capabilities and syntax.
-# JAML is a simple-yet-powerful formatting language, used primarily for configuration files - much like TOML or YAML.
+# JAML is a flexible and powerful formatting language, used primarily for configuration files - much like TOML or YAML.
 # It supports a variety of data types, including strings, integers, floats, booleans, arrays, maps and records.
 # However - unlike these languages, it offers a built-in templating engine that is environment and language agnostic.
 # This allows for templating and conditionals to be used directly in the configuration file.
