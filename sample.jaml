@@ -101,6 +101,18 @@ array = [False, True, 2, 3.0, "four", 5]  # array assignment - note the square b
 # arrays can contain any combination of strings, integers, floats, booleans, arrays, maps and records
 # ["one", 2, 3.0, True, [4, 5], ["six", 7], {"eight": 9, 10: "ten"}] is a valid array
 
+# Arrays can be indexed using square brackets notation, like so: array[0], array[1], array[2], etc.
+# Array indices are zero-based, so the first element is at index 0, the second element is at index 1, and so on
+# Negative indices can be used to count from the end of the array, like so: array[-1], array[-2], array[-3], etc.
+# Thus, based on the above array, array[0] → False, array[1] → True, array[2] → 2, array[3] → 3.0, etc.
+# Trying to access an index that does not exist (as in out of bounds) will raise an error
+
+# Arrays can also be sliced using the colon operator, like so: array[1:3], array[:3], array[3:], etc.
+# Slicing returns a new array containing the elements from the start index to the end index
+# If the start index is omitted, it defaults to 0, and if the end index is omitted, it defaults to the last element
+# Negative indices can be used to count from the end of the array, like so: array[-1], array[-2], array[-3], etc.
+# Negative slicing can also be used, like so: array[:-1], array[-3:], array[-3:-1], etc.
+
 # multidimensional (or "nested") arrays are supported, like so: [1, 2, [3, 4], 5]
 # nested arrays can be of any depth, and can contain arrays of different lengths and types
 # [1, 2, ["one", "two"], [5.0]] is a valid array, as is [1, 2, [3.0, 4.0, [True, False]], 7]
@@ -134,6 +146,10 @@ map = {"key1": "value1", 2: "value2", 3.0: 3.0, '4': True} # map assignment - no
 # values can be any type, including strings, integers, floats, booleans, arrays, maps and records
 # note the mapping operator (:) between the key and value, and the comma (,) between key-value pairs
 
+# Maps can be indexed using square brackets notation, like so: map["key1"], map[2], map[3.0], map['4']
+# Trying to access a key that does not exist will raise an error
+# Thus, based on the above map, map["key1"] → "value1", map[2] → "value2", map[3.0] → 3.0, map['4'] → True
+
 # nested maps are supported, like so: {"key": {"nested_key": "value"}}
 # nested maps can be of any depth, and can contain maps of different lengths and types
 # {"key1": {"nested_key1": "value1", "nested_key2": "value2"}, "key2": {"nested_key3": "value3"}} is a valid map
@@ -153,6 +169,11 @@ record = <"key1": "value1", "key2": Null, "optional_key">  # record assignment -
 # records in JAML are somewhat similar to maps, but support optional keys and a different syntax
 # records are defined using angle brackets, with key-value pairs separated by colons, or just keys for optional keys
 # unlike maps, keys can only be strings, but values can be any type supported by JAML
+
+# Records can be indexed using dot notation, like so: record.key1, record.key2, record.optional_key
+# Like maps, trying to access a key that does not exist will raise an error
+# However, since records support optional keys, trying to access a key that has no value will simply return Null
+# Thus, based on the above record, record.key1 → "value1", record.key2 → Null, record.optional_key → Null
 
 # nested records are supported, like so: <"key": <"nested_key": "value">>
 # nested records can be of any depth, and can contain records of different lengths and types
