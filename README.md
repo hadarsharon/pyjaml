@@ -26,4 +26,4 @@ python setup.py install
 
 ## Learn about JAML
 
-The [official JAML Wiki]() is the best place to learn about the JAML language, its features, and how to use it. 
+The [official JAML Wiki]() is the best place to learn about the JAML language, its features, and how to use it.
